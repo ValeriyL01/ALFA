@@ -1,0 +1,17 @@
+.backButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #eaf0ff;
+  margin-bottom: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  &Arrow {
+    width: 25px;
+    height: 25px;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}

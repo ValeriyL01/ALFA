@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useStore } from "../../../stores/store";
 import { Character } from "../../api/getCharacters";
 import { Like } from "../../icons/Like";
@@ -10,12 +11,18 @@ export const Card: React.FC<CharacterProp> = ({ character }) => {
   const isLiked = likeCharacters.some((item) => item.id === character.id);
   return (
     <div className={styles.card}>
-      <h3 className={styles.cardName}>{character.name}</h3>
-      <img
-        className={styles.cardImage}
-        src={character.image}
-        alt={character.name}
-      />
+      <Link
+        style={{ textDecoration: "none", color: "inherit" }}
+        key={character.id}
+        to={`/products/${character.id}`}
+      >
+        <h3 className={styles.cardName}>{character.name}</h3>
+        <img
+          className={styles.cardImage}
+          src={character.image}
+          alt={character.name}
+        />
+      </Link>
       <div className={styles.cardButtonContainer}>
         <button
           className={styles.button}

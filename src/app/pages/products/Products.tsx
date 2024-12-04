@@ -5,6 +5,8 @@ import { useStore } from "../../../stores/store";
 import { useEffect, useState } from "react";
 import { Card } from "../../components/card/Card";
 
+import { Loading } from "../../components/loading/Loading";
+
 export const Products: React.FC = () => {
   const { data: characters, isLoading } = useQuery({
     queryKey: ["characters"],
@@ -23,7 +25,7 @@ export const Products: React.FC = () => {
   }, [characters, setCharacters]);
 
   if (isLoading) {
-    return <h1>Загрузка</h1>;
+    return <Loading></Loading>;
   }
 
   const filteredCharacters = showFavorites ? likeCharacters : charactersStore;
@@ -43,7 +45,7 @@ export const Products: React.FC = () => {
       </div>
       <div className={styles.productsContainer}>
         {filteredCharacters.map((character) => (
-          <Card key={character.id} character={character} />
+          <Card character={character} />
         ))}
       </div>
     </>
