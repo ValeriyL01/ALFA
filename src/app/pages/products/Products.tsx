@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 import { Card } from "../../components/card/Card";
 
 import { Loading } from "../../components/loading/Loading";
+import { useNavigate } from "react-router-dom";
 
 export const Products: React.FC = () => {
+  const navigate = useNavigate();
+
   const { data: characters, isLoading } = useQuery({
     queryKey: ["characters"],
     queryFn: fetchCharacters,
@@ -43,9 +46,17 @@ export const Products: React.FC = () => {
           Избранное
         </button>
       </div>
+      <button
+        className={styles.button}
+        onClick={() => {
+          navigate("/create-product");
+        }}
+      >
+        Создать персонажа
+      </button>
       <div className={styles.productsContainer}>
         {filteredCharacters.map((character) => (
-          <Card character={character} />
+          <Card key={character.id} character={character} />
         ))}
       </div>
     </>

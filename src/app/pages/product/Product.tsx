@@ -4,27 +4,40 @@ import { fetchCharacter } from "../../api/getCharacter";
 import { useParams } from "react-router-dom";
 import { BackButton } from "../../components/backButton/BackButton";
 import { Loading } from "../../components/loading/Loading";
+import { useStore } from "../../../stores/store";
 
 export const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { data: character, isLoading } = useQuery({
+  const { createCharacters } = useStore((state) => state);
+
+  const character = createCharacters.find((char) => char.id.toString() === id);
+
+  const { data, isLoading } = useQuery({
     queryKey: ["character", id],
     queryFn: () => fetchCharacter(id || ""),
+    enabled: !character,
   });
-  if (isLoading) {
-    return <Loading></Loading>;
+
+  const characterToDisplay = character || data;
+
+  if (isLoading || !characterToDisplay) {
+    return <Loading />;
   }
+
   return (
     <>
-      <BackButton></BackButton>
-
-      <h1>{character?.name}</h1>
-      <img src={character?.image} alt={character?.name} />
-      <p>Статус: {character?.status}</p>
-      <p>Вид: {character?.species}</p>
-      <p>Пол: {character?.gender}</p>
-      <p>Место происхождения: {character?.origin.name}</p>
-      <p>Местоположение: {character?.location.name}</p>
+      <BackButton />
+      <h3 className={styles.title}>{characterToDisplay.name}</h3>
+      <img
+        className={styles.images}
+        src={characterToDisplay.image}
+        alt={characterToDisplay.name}
+      />
+      <p>Статус: {characterToDisplay.status}</p>
+      <p>Вид: {characterToDisplay.species}</p>
+      <p>Пол: {characterToDisplay.gender}</p>
+      <p>Место происхождения: {characterToDisplay.origin.name}</p>
+      <p>Местоположение: {characterToDisplay.location.name}</p>
     </>
   );
 };

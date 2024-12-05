@@ -11,10 +11,11 @@
   transition: 300ms;
   gap: 5px;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
   &Image {
     width: 200px;
+    height: 200px;
   }
   &Name {
     font-size: 1.2rem;
@@ -29,8 +30,7 @@
 }
 .button {
   width: 60px;
-  border: none;
-  cursor: pointer;
+  background-color: #eaf0ff;
   &:hover {
     background-color: rgb(160, 186, 225);
   }

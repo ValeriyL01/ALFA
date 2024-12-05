@@ -20,6 +20,7 @@ interface Character {
 interface StoreState {
   characters: Character[];
   likeCharacters: Character[];
+  createCharacters: Character[];
   addCharacter: (character: Character) => void;
   removeCharacter: (id: number) => void;
   toggleLikeCharacter: (character: Character) => void;
@@ -29,8 +30,11 @@ interface StoreState {
 export const useStore = create<StoreState>((set) => ({
   characters: [],
   likeCharacters: [],
+  createCharacters: [],
   addCharacter: (character) =>
-    set((state) => ({ characters: [...state.characters, character] })),
+    set((state) => ({
+      createCharacters: [...state.createCharacters, character],
+    })),
   removeCharacter: (id) =>
     set((state) => ({
       characters: state.characters.filter((character) => character.id !== id),
@@ -50,5 +54,8 @@ export const useStore = create<StoreState>((set) => ({
         return { likeCharacters: [...state.likeCharacters, character] };
       }
     }),
-  setCharacters: (characters) => set({ characters }),
+  setCharacters: (characters) =>
+    set((state) => ({
+      characters: [...characters, ...state.createCharacters],
+    })),
 }));

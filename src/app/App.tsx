@@ -8,6 +8,7 @@ import {
 import styles from "./App.module.scss";
 import { Products } from "./pages/products/Products";
 import { Product } from "./pages/product/Product";
+import { CreateProduct } from "./pages/createProduct/CreateProduct";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Navigate to="/products" />} />
             <Route path="/products" element={<Products />}></Route>
             <Route path="/products/:id" element={<Product />}></Route>
+            <Route path="/create-product" element={<CreateProduct />}></Route>
           </Routes>
         </div>
       </div>
