@@ -10,7 +10,7 @@ export const Like: React.FC<LikeProps> = ({ isLiked }) => {
         width: "2em",
         height: "2em",
         verticalAlign: "middle",
-        fill: `${isLiked ? "red" : "currentcolor"} `,
+        fill: `${isLiked ? "#e25555" : "currentcolor"} `,
         overflow: "hidden",
       }}
       viewBox="0 0 1024 1024"

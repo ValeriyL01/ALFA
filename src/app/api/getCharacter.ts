@@ -22,7 +22,7 @@ export const fetchCharacter = async (id: string): Promise<Character> => {
     const response = await axios.get(
       `https://rickandmortyapi.com/api/character/${id}`
     );
-    console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.error("Ошибка при получении персонажей:", error);

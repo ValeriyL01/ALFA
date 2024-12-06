@@ -3,6 +3,7 @@ import { useStore } from "../../../stores/store";
 import { Character } from "../../api/getCharacters";
 import { Like } from "../../icons/Like";
 import styles from "./Card.module.scss";
+import { Delete } from "../../icons/Delete";
 interface CharacterProp {
   character: Character;
 }
@@ -31,7 +32,7 @@ export const Card: React.FC<CharacterProp> = ({ character }) => {
             removeCharacter(character.id);
           }}
         >
-          🗑️
+          <Delete></Delete>
         </button>
         <button
           className={styles.button}
