@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  justify-content: flex-end;
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+  transition: 300ms;
+  gap: 5px;
+  &:hover {
+    transform: scale(1.01);
+  }
+  &Image {
+    width: 200px;
+    height: 200px;
+  }
+  &Name {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  &ButtonContainer {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+  }
+}
+.button {
+  width: 60px;
+  background-color: #2d4350;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: rgb(52, 84, 131);
+  }
+}

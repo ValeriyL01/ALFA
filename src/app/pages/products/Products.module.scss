@@ -1,0 +1,14 @@
+.productsContainer {
+  display: flex;
+  justify-content: center;
+  max-width: 800px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.filterButtons {
+  display: flex;
+  gap: 20px;
+}
+.button {
+  width: 100px;
+}
